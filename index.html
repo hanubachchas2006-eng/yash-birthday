@@ -39,9 +39,48 @@ h1{font-size:clamp(38px,11vw,62px);margin:8px 0 2px;line-height:1;font-weight:80
 </div>
 <div class="confetti" id="confetti"></div>
 <script>
-const v=document.getElementById('bg'), b=document.getElementById('start'), c=document.getElementById('confetti');
-function confetti(){for(let i=0;i<70;i++){const p=document.createElement('i');p.className='piece';p.style.left=Math.random()*100+'vw';p.style.setProperty('--x',(Math.random()*40-20)+'vw');p.style.animationDuration=(2.8+Math.random()*3.2)+'s';p.style.animationDelay=(Math.random()*.8)+'s';p.style.opacity=.45+Math.random()*.55;p.style.background=`hsl(${Math.random()*360},90%,70%)`;c.appendChild(p);setTimeout(()=>p.remove(),7000)}}
-b.addEventListener('click',async()=>{try{await v.play();}catch(e){} b.classList.add('hidden');confetti();});
+<script>
+const v = document.getElementById('bg');
+const b = document.getElementById('start');
+const c = document.getElementById('confetti');
+const card = document.querySelector('.card');
+const shade = document.querySelector('.shade');
+const stars = document.querySelector('.stars');
+
+function confetti() {
+  for (let i = 0; i < 70; i++) {
+    const p = document.createElement('i');
+    p.className = 'piece';
+
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.setProperty('--x', (Math.random() * 40 - 20) + 'vw');
+    p.style.animationDuration = (2.8 + Math.random() * 3.2) + 's';
+    p.style.animationDelay = (Math.random() * .8) + 's';
+    p.style.opacity = .45 + Math.random() * .55;
+    p.style.background = `hsl(${Math.random() * 360},90%,70%)`;
+
+    c.appendChild(p);
+    setTimeout(() => p.remove(), 7000);
+  }
+}
+
+b.addEventListener('click', async () => {
+
+  try {
+    await v.play();
+  } catch (e) {}
+
+  // Birthday interface hide
+  card.classList.add('hidden');
+
+  // Background overlays hide
+  shade.classList.add('hidden');
+  stars.classList.add('hidden');
+
+  // Confetti effect
+  confetti();
+});
+</script>
 </script>
 </body>
 </html>
