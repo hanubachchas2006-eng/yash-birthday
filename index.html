@@ -284,6 +284,21 @@ startButton.onclick = function() {
 
 
   /* VIDEO PLAY */
+  video.playbackRate = 0.75;
+
+  const video = document.getElementById("bg");
+const startButton = document.getElementById("start");
+const intro = document.getElementById("intro");
+
+startButton.onclick = function() {
+
+  intro.classList.add("hide");
+
+  // Video first 8 seconds skip karegi
+  video.currentTime = 8;
+
+  // Video speed 0.75x
+  video.playbackRate = 0.75;
 
   video.play();
 
