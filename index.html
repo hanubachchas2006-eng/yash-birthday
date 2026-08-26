@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Happy Birthday Yash 🎂</title>
 
@@ -23,23 +24,80 @@ html, body {
 }
 
 /* VIDEO */
+
 #bg {
   position: fixed;
   inset: 0;
+
   width: 100%;
   height: 100%;
+
   object-fit: cover;
+
   z-index: 1;
 }
 
-/* START SCREEN */
-#intro {
+
+/* YASH TEXT */
+
+#birthdayText {
+
   position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 5;
+
+  color: white;
+
+  text-align: center;
+
+  text-shadow:
+  0 0 10px #ffcc00,
+  0 0 20px #ff9900;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  transition: opacity 1s ease;
+
+}
+
+#birthdayText h1 {
+
+  font-size: clamp(35px, 8vw, 70px);
+
+  margin: 0;
+
+}
+
+#birthdayText p {
+
+  font-size: clamp(18px, 4vw, 30px);
+
+  margin-top: 10px;
+
+}
+
+
+/* INTRO SCREEN */
+
+#intro {
+
+  position: fixed;
+
   inset: 0;
+
   z-index: 10;
 
   display: flex;
+
   justify-content: center;
+
   align-items: center;
 
   background: linear-gradient(
@@ -48,12 +106,18 @@ html, body {
     #101a4a,
     #02051b
   );
+
 }
 
+
 /* CARD */
+
 .card {
+
   width: min(88vw, 440px);
+
   padding: 30px 22px;
+
   text-align: center;
 
   border-radius: 25px;
@@ -63,29 +127,45 @@ html, body {
   border: 1px solid rgba(255,255,255,0.2);
 
   color: white;
+
 }
 
+
 /* TEXT */
+
 .badge {
+
   font-size: 14px;
+
   letter-spacing: 2px;
+
 }
 
 h1 {
+
   font-size: 55px;
+
   margin: 15px 0;
+
 }
 
 .subtitle {
+
   font-size: 20px;
+
 }
 
 .message {
+
   margin-top: 15px;
+
   line-height: 1.6;
+
 }
 
+
 /* BUTTON */
+
 .cta {
 
   margin-top: 20px;
@@ -108,62 +188,91 @@ h1 {
 
 }
 
-/* HIDE INTRO */
+
+/* HIDE */
 
 .hide {
+
   display: none !important;
+
+}
+
+.show {
+
+  opacity: 1 !important;
+
 }
 
 </style>
 </head>
 
+
 <body>
+
 
 <!-- VIDEO -->
 
-<video id="bg" playsinline loop preload="auto">
+<video id="bg" playsinline preload="auto">
 
-<source src="surprise.mp4" type="video/mp4">
+  <source src="surprise.mp4" type="video/mp4">
 
 </video>
+
+
+<!-- YASH BIRTHDAY TEXT -->
+
+<div id="birthdayText">
+
+  <h1>🎂 Happy Birthday Yash!</h1>
+
+  <p>Wishing you happiness and success ✨</p>
+
+</div>
 
 
 <!-- INTRO SCREEN -->
 
 <div id="intro">
 
-<div class="card">
+  <div class="card">
 
-<div class="badge">
-A LITTLE SURPRISE FOR
+    <div class="badge">
+      A LITTLE SURPRISE FOR
+    </div>
+
+    <h1>
+      Yash 🎂
+    </h1>
+
+    <div class="subtitle">
+      Happy Birthday! ✨
+    </div>
+
+    <div class="message">
+
+      May your day be full of smiles,
+      beautiful memories and happiness. 💙
+
+      <br><br>
+
+      Keep shining, keep growing,
+      and may this new year of your life
+      bring lots of success and unforgettable
+      moments! 🎉
+
+    </div>
+
+
+    <button class="cta" id="start">
+
+      ▶ Tap to start the surprise
+
+    </button>
+
+  </div>
+
 </div>
 
-<h1>
-Yash 🎂
-</h1>
-
-<div class="subtitle">
-Happy Birthday! ✨
-</div>
-
-<div class="message">
-
-May your day be full of smiles, beautiful memories and happiness. 💙
-
-Keep shining, keep growing, and may this new year of your life bring lots of success and unforgettable moments! 🎉
-
-</div>
-
-
-<button class="cta" id="start">
-
-▶ Tap to start the surprise
-
-</button>
-
-</div>
-
-</div>
 
 
 <script>
@@ -174,17 +283,43 @@ const startButton = document.getElementById("start");
 
 const intro = document.getElementById("intro");
 
+const birthdayText =
+document.getElementById("birthdayText");
+
 
 startButton.onclick = function() {
 
+  /* INTRO HIDE */
+
   intro.classList.add("hide");
 
+
+  /* FIRST 8 SECONDS SKIP */
+
+  video.currentTime = 8;
+
+
+  /* VIDEO PLAY */
+
   video.play();
+
+
+  /* SHOW YASH TEXT */
+
+  birthdayText.classList.add("show");
+
+
+  /* TEXT 5 SECONDS BAAD HIDE */
+
+  setTimeout(function() {
+
+    birthdayText.style.opacity = "0";
+
+  }, 5000);
 
 };
 
 </script>
 
 </body>
-
 </html>
