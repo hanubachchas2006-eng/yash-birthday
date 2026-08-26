@@ -197,13 +197,6 @@ h1 {
 
 }
 
-.show {
-
-  opacity: 1 !important;
-
-}
-
-</style>
 </head>
 
 
@@ -219,15 +212,8 @@ h1 {
 </video>
 
 
-<!-- YASH BIRTHDAY TEXT -->
 
-<div id="birthdayText">
 
-  <h1>🎂 Happy Birthday Yash!</h1>
-
-  <p>Wishing you happiness and success ✨</p>
-
-</div>
 
 
 <!-- INTRO SCREEN -->
@@ -283,8 +269,6 @@ const startButton = document.getElementById("start");
 
 const intro = document.getElementById("intro");
 
-const birthdayText =
-document.getElementById("birthdayText");
 
 
 startButton.onclick = function() {
@@ -302,20 +286,6 @@ startButton.onclick = function() {
   /* VIDEO PLAY */
 
   video.play();
-
-
-  /* SHOW YASH TEXT */
-
-  birthdayText.classList.add("show");
-
-
-  /* TEXT 5 SECONDS BAAD HIDE */
-
-  setTimeout(function() {
-
-    birthdayText.style.opacity = "0";
-
-  }, 5000);
 
 };
 
